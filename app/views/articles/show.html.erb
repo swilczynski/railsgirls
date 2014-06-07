@@ -10,7 +10,10 @@
 	<h1>Description</h1>
 	<p><%= @article.description %></p>
 
+	<p><%= @article.user.name %></p>
+
 	<p><%= link_to "Show all", articles_path %></p>
+	<p><%= link_to "Vote", article_votes_path(@article), method: :post %></p>
 	<p><%= link_to "Edit", edit_article_path(@article) %></p>
 	<p><%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
