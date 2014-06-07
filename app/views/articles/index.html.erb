@@ -3,15 +3,28 @@
 <% end %>
 
 <% content_for :content do %>
-	<p><%= link_to "New Article", new_article_path %></p>
-	<ul>
-	<% @articles.each do |article| %>
-		<li>
-			<h1><%= article.title %></h1>
-			<p><%= article.description %></p>
-			<p><%= link_to "Show Details", article_path(article) %></p>
-			<p><%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
-		</li>
-	<% end %>
-	</ul>
+	<p><%= link_to "New Article", new_article_path, :class => "btn btn-default" %></p>
+	<table class="table table-striped">
+  		<thead>
+  			<tr>
+  				<th>Title</th>
+  				<th>Blurb</th>
+  				<th width="220">Actions</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			<% @articles.each do |article| %>
+			<tr>
+				<td><%= article.title %></td>
+				<td><%= article.blurb %></td>
+				<td>
+					<ul class="actions">
+						<li><%= link_to "Show Details", article_path(article), :class => "btn btn-default" %></li>
+						<li><%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default" %></li>
+					</ul>
+				</td>
+			</tr>
+			<% end %>
+  		</tbody>
+	</table>
 <% end %>

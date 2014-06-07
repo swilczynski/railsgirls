@@ -10,10 +10,22 @@
 	<h1>Description</h1>
 	<p><%= @article.description %></p>
 
+	<h1>Author</h1>
 	<p><%= @article.user.name %></p>
 
-	<p><%= link_to "Show all", articles_path %></p>
-	<p><%= link_to "Vote", article_votes_path(@article), method: :post %></p>
-	<p><%= link_to "Edit", edit_article_path(@article) %></p>
-	<p><%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %>
+	<h1>Votes</h1>
+	<p><%= @article.votes.length %></p>
+
+	<hr>
+
+	<ul class="actions">
+		<% if !@article.votes.exists?(:user_id => @voter.id) and @allowed_voting_groups.include? @voter.group %>
+			<li><%= link_to "Vote", article_votes_path(@article), method: :post, :class => 'btn btn-default' %></li>
+		<% else %>
+			<li><%= link_to "Unvote", article_vote_path(@article, @voter), method: :delete, :class => 'btn btn-default' %></li>
+		<% end %>	
+		<li><%= link_to "Show all", articles_path, :class => 'btn btn-default' %></li>
+		<li><%= link_to "Edit", edit_article_path(@article), :class => 'btn btn-default' %></li>
+		<li><%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default' %></li>
+	</ul>
 <% end %>

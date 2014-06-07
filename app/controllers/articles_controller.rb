@@ -19,6 +19,8 @@ class ArticlesController < ApplicationController
   	@article = Article.new(article_params)
 
 	if @article.valid?
+    @article.user_id = @logged_in_user.id
+
 		@article.save
 
 		redirect_to @article
@@ -28,7 +30,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-	@article = Article.find(params[:id])
+	  @article = Article.find(params[:id])
 
   	@article.update(article_params)
 
