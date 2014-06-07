@@ -39,5 +39,6 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 group :production do
+  gem 'pg'	
   gem 'shelly-dependencies'
 end
