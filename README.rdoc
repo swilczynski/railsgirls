@@ -1,0 +1,20 @@
+== README
+
+Entities:
+
+article
+--------
+author_id
+title
+description
+
+vote
+-----
+article_id
+voter_id
+
+user
+-----
+name
+group
+email

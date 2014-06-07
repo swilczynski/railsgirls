@@ -1,0 +1,8 @@
+<% content_for :header do %>
+	<h1>Edit Article</h1>
+	<p><%= @article.title %></p>
+<% end %>
+
+<% content_for :content do %>
+	<%= render 'form' %>
+<% end %>

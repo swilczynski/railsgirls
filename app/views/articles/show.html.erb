@@ -1,0 +1,16 @@
+<% content_for :header do %>
+	<h1>Title</h1>
+	<p><%= @article.title %></p>
+<% end %>
+
+<% content_for :content do %>
+	<h1>Blurb</h1>
+	<p><%= @article.blurb %></p>
+
+	<h1>Description</h1>
+	<p><%= @article.description %></p>
+
+	<p><%= link_to "Show all", articles_path %></p>
+	<p><%= link_to "Edit", edit_article_path(@article) %></p>
+	<p><%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
